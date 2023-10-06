@@ -1,0 +1,26 @@
+/* @import 'fonts/fonts.css'; */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito Sans&display=swap');
+
+body {
+	font-family: 'Nunito Sans', 'Times New Roman' !important;
+	/* -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important; */
+}
+
+.btn {
+	border-radius: 50px !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	font-weight: 800 !important;
+}
+
+.portal-menu a {
+	text-decoration: none;
+	font-size: 10pt;
+	cursor: pointer;
+	color: #333333;
+}
+
+a.btn.btn-primary {
+	color: #ffffff;
+}
