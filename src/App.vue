@@ -1,35 +1,45 @@
+<template>
+  <div>
+    <h2>Todos em aberto</h2>
+    <div v-for="todo in incompletedTodos" :key="todo.id">
+      {{ todo.title }}
+    </div>
+
+    <h2>Todos completas</h2>
+    <div v-for="todo in completedTodos" :key="todo.id">
+      {{ todo.title }}
+    </div>
+
+    <br /><br /><br />
+
+    <h2>Todos</h2>
+    <div v-for="todo in todos" :key="todo.id">
+      <input v-model="todo.completed" type="checkbox" />
+      {{ todo.title }}
+    </div>
+  </div>
+  <br />
+</template>
+
 <script setup>
-import { ref } from 'vue';
-import Input from './components/Input.vue';
-import Button from './components/Button.vue';
+import { computed } from 'vue';
+import { todos } from './todo.vue';
 
-const tarefa = ref('');
+const completedTodos = computed(() => {
+  return todos.value.filter((todo) => todo.completed);
+});
 
-const todo = async () => {
-  const dados = {
-    inputTarefa: tarefa.value,
-  };
-  console.log(dados);
-};
+const incompletedTodos = computed(() => {
+  return todos.value.filter((todo) => !todo.completed);
+});
 </script>
 
-<template>
-  <container>
-    <h1 class="bg-primary d-flex justify-content-center p-4">TO DO LIST</h1>
-
-    <div
-      class="d-flex justify-content-center bg-secondary align-items-center gap-3"
-      style="height: 100vh"
-    >
-      <form ref="getDados" @submit.prevent="todo($event)">
-        <Input
-          @submit.prevent="login($event)"
-          type="text"
-          v-model="tarefa"
-          placeholder="Digite sua tarefa"
-        />
-        <Button type="submit" title="adicionar" />
-      </form>
-    </div>
-  </container>
-</template>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  margin: 60px;
+}
+</style>
